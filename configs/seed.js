@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Project = require("../models/Project.model");
+const Tasks = require("../models/Task.model");
 
 mongoose
   .connect("mongodb://localhost/project-api", {
@@ -8,8 +8,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((res) => {
-    Project.create({
-      title: "First Project",
-      description: "This is our first project",
+    Tasks.create({
+      name: "First Tasks",
+      description: "This is our first Tasks",
+      status: "Open"
     }).then(() => mongoose.connection.close());
+    
   });
