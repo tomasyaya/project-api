@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Project = require("../models/Project.model");
+const Task = require("../models/Task.model")
 
 mongoose
   .connect("mongodb://localhost/project-api", {
@@ -11,5 +12,11 @@ mongoose
     Project.create({
       title: "First Project",
       description: "This is our first project",
-    }).then(() => mongoose.connection.close());
+    }).then((res) => {
+      Task.create({
+        title: "First Task",
+        description: "This is our first Task",
+        status: "encantado"
+      }).then(() => mongoose.connection.close());
   });
+  })
